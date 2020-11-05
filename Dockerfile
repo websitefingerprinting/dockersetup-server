@@ -11,6 +11,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install net-tools 
 RUN apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
+RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo 'Asia/Shanghai' >/etc/timezone \
+    
 # add host user to container
 RUN adduser --system --group --disabled-password --gecos '' --shell /bin/bash docker
 
