@@ -9,6 +9,9 @@ XAUTH=/tmp/.docker.xauth
 BASE_PATH=/home/docker
 GUEST_SSH=/home/docker/.ssh
 DOCKERSETUP_PATH=/home/docker/dockersetup
+TORCONFIG_PATH=/home/docker/tor-config
+
+HOST_TORCONFIG_PATH=/home/jgongac/tor-config
 HOST_SSH=${HOME}/.ssh
 HOST=${HOME}
 
@@ -16,13 +19,13 @@ ENV_VARS = \
 	--env="XAUTHORITY=${XAUTH}"					\
 
 VOLUMES = \
-	--volume=${HOST_SSH}:${GUEST_SSH}			\
-	--volume=${HOST}:${BASE_PATH}				\
-	--volume=`pwd`:${DOCKERSETUP_PATH}			\
+	--volume=${HOST_SSH}:${GUEST_SSH}			             \
+	--volume=${HOST}:${BASE_PATH}				             \
+	--volume=${HOST}/gan-tunnel:${BASE_PATH}/gan-tunnel      \
+	--volume=${HOST_TORCONFIG_PATH}:${TORCONFIG_PATH}    
 
 
 
-tag=tor1
 port=35000
 
 # Make routines
@@ -30,10 +33,10 @@ build:
 	@docker build -t torbridge --rm .
 
 run:
-	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES}  -p ${port}:35000 \
-	--privileged torbridge ${DOCKERSETUP_PATH}/Entrypoint.sh 
+	@docker run -it --rm --name p${port} ${ENV_VARS} ${VOLUMES}  -p ${port}:35000 \
+	--privileged torbridge ${DOCKERSETUP_PATH}/Entrypoint.sh "$(port)"
 shell:
-	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES} -p ${port}:35000 \
+	@docker run -it --rm --name p${port} ${ENV_VARS} ${VOLUMES} -p ${port}:35000 \
 	--privileged torbridge /bin/bash
 
 stop:

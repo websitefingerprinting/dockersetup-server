@@ -9,4 +9,5 @@ TORRC_PATH='/home/docker/dockersetup-server/tunnel-proxy-linux-docker'
 ifconfig ${DEVICE} mtu 1500
 ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
 pushd ${BASE}
+echo 'DataDirectory /home/docker/tunnel-prixy-hostport'$1 >> ${TORRC_PATH}
 tor -f ${TORRC_PATH}
