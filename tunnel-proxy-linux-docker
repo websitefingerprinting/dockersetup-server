@@ -1,0 +1,14 @@
+# Feel free to adapt the path.
+DataDirectory /home/docker/log-tunnel-proxy  
+Log notice stdout    
+SOCKSPort auto    
+AssumeReachable 1    
+PublishServerDescriptor 0    
+Exitpolicy reject *:*    
+ORPort auto   
+ExtORPort auto
+Nickname "tunnel"    
+BridgeRelay 1    
+ServerTransportListenAddr obfs4 0.0.0.0:35000
+ServerTransportPlugin obfs4 exec /home/docker/gan-tunnel/obfs4proxy/obfs4proxy
+
