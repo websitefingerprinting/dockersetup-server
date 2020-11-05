@@ -9,4 +9,3 @@ Nickname "tunnel"
 BridgeRelay 1    
 ServerTransportListenAddr obfs4 0.0.0.0:35000
 ServerTransportPlugin obfs4 exec /home/docker/gan-tunnel/obfs4proxy/obfs4proxy
-
