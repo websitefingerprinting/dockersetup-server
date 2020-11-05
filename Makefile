@@ -21,7 +21,8 @@ ENV_VARS = \
 VOLUMES = \
 	--volume=${HOST_SSH}:${GUEST_SSH}			             \
 	--volume=${HOST}/gan-tunnel:${BASE_PATH}/gan-tunnel      \
-	--volume=${HOST_TORCONFIG_PATH}:${TORCONFIG_PATH}    
+	--volume=${HOST_TORCONFIG_PATH}:${TORCONFIG_PATH}        \
+	--volume=`pwd`:${DOCKERSETUP_PATH}
 
 
 
