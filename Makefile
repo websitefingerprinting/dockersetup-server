@@ -8,7 +8,7 @@ XAUTH=/tmp/.docker.xauth
 # paths
 BASE_PATH=/home/docker
 GUEST_SSH=/home/docker/.ssh
-DOCKERSETUP_PATH=/home/docker/dockersetup
+DOCKERSETUP_PATH=/home/docker/dockersetup-server
 TORCONFIG_PATH=/home/docker/tor-config
 
 HOST_TORCONFIG_PATH=/home/jgongac/tor-config
@@ -20,7 +20,6 @@ ENV_VARS = \
 
 VOLUMES = \
 	--volume=${HOST_SSH}:${GUEST_SSH}			             \
-	--volume=${HOST}:${BASE_PATH}				             \
 	--volume=${HOST}/gan-tunnel:${BASE_PATH}/gan-tunnel      \
 	--volume=${HOST_TORCONFIG_PATH}:${TORCONFIG_PATH}    
 
