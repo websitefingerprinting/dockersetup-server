@@ -9,7 +9,6 @@ XAUTH=/tmp/.docker.xauth
 BASE_PATH=/home/docker
 GUEST_SSH=/home/docker/.ssh
 DOCKERSETUP_PATH=/home/docker/dockersetup
-TORRC_PATH=/home/docker/tor-config
 HOST_SSH=${HOME}/.ssh
 HOST=${HOME}
 
@@ -20,7 +19,6 @@ VOLUMES = \
 	--volume=${HOST_SSH}:${GUEST_SSH}			\
 	--volume=${HOST}:${BASE_PATH}				\
 	--volume=`pwd`:${DOCKERSETUP_PATH}			\
-	--volume=${HOST}/tor-config:${TORRC_PATH}	
 
 
 
@@ -32,10 +30,10 @@ build:
 	@docker build -t torbridge --rm .
 
 run:
-	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES} --net=host -p ${port}:35000\
+	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES}  -p ${port}:35000 \
 	--privileged torbridge ${DOCKERSETUP_PATH}/Entrypoint.sh 
 shell:
-	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES} --net=host -p ${port}:35000\
+	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES} -p ${port}:35000 \
 	--privileged torbridge /bin/bash
 
 stop:
