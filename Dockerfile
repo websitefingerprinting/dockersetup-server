@@ -17,15 +17,15 @@ RUN adduser --system --group --disabled-password --gecos '' --shell /bin/bash do
 
 
 #download tor
-RUN git clone https://github.com/websitefingerprinting/dockersetup.git 
-RUN tar -zxvf /dockersetup/tor-0.4.4.5.tar.gz 
+RUN git clone https://github.com/websitefingerprinting/dockersetup-server.git 
+RUN tar -zxvf /dockersetup-server/tor-0.4.4.5.tar.gz 
 WORKDIR ./tor-0.4.4.5
 RUN ./configure --disable-asciidoc && sudo make && sudo make install	
 
 WORKDIR /
 RUN rm -r ./tor-0.4.4.5
-RUN mv /dockersetup /home/docker/
-RUN chmod a+x /home/docker/dockersetup/Entrypoint.sh
+RUN mv /dockersetup-server /home/docker/
+RUN chmod a+x /home/docker/dockersetup-server/Entrypoint.sh
 
 # Set the display
 ENV DISPLAY $DISPLAY
