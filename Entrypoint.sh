@@ -9,9 +9,7 @@ TORRC_PATH='/home/docker/tunnel-proxy-linux-docker'
 ifconfig ${DEVICE} mtu 1500
 ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
 pushd ${BASE}
-# create a Alexcrawler folder 
-# used for saving bridge traffic
-mkdir -p /home/docker/AlexaCrawler/dump
+
 
 #set torrc file
 echo 'DataDirectory /home/docker/tor-config/tunnel-proxy-hostport'$1 >> ${TORRC_PATH}
