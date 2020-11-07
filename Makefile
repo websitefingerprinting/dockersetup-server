@@ -22,6 +22,7 @@ VOLUMES = \
 	--volume=${HOST_SSH}:${GUEST_SSH}			                    \
 	--volume=${HOST}/gan-tunnel:${BASE_PATH}/gan-tunnel             \
 	--volume=${HOST}/trafficSniffer:${BASE_PATH}/trafficSniffer     \
+	--volume=${HOST}/AlexaCrawler:${BASE_PATH}/AlexaCrawler	        \
 	--volume=${HOST_TORCONFIG_PATH}:${TORCONFIG_PATH}               \
 	--volume=`pwd`:${DOCKERSETUP_PATH}
 
