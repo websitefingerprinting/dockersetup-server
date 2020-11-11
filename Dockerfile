@@ -24,8 +24,9 @@ RUN ./configure --disable-asciidoc && sudo make && sudo make install
 
 WORKDIR /
 RUN rm -r ./tor-0.4.4.5
-RUN mv /dockersetup-server /home/docker/
-RUN chmod a+x /home/docker/dockersetup-server/Entrypoint.sh
+RUN rm -r /dockersetup-server
+# RUN mv /dockersetup-server /home/docker/
+# RUN chmod a+x /home/docker/dockersetup-server/Entrypoint.sh
 
 # Set the display
 ENV DISPLAY $DISPLAY
