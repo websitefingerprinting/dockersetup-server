@@ -40,7 +40,8 @@ run:
 shell:
 	@docker run -it --rm --name p${port} ${ENV_VARS} ${VOLUMES} -p ${port}:35000 \
 	--privileged torbridge /bin/bash
-
+clean:
+	@sudo rm -rf ${HOST_TORCONFIG_PATH}/tunnel-proxy-hostport*/pt_state/obfs4proxy.log
 stop:
 	@docker stop `docker ps -a -q -f ancestor=torbridge`
 	@docker rm `docker ps -a -q -f ancestor=torbridge`
