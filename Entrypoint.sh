@@ -5,6 +5,7 @@
 DEVICE=eth0
 BASE='/home/docker'
 TORRC_PATH='/home/docker/tunnel-proxy-linux-docker'
+PT='gan-tunnel'
 # set offloads
 ifconfig ${DEVICE} mtu 1500
 ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
@@ -23,7 +24,7 @@ echo 'ExtORPort auto' >>  ${TORRC_PATH}
 echo 'Nickname "tunnel" ' >>  ${TORRC_PATH}
 echo 'BridgeRelay 1' >>  ${TORRC_PATH}
 echo 'ServerTransportListenAddr obfs4 0.0.0.0:35000' >>  ${TORRC_PATH}
-echo 'ServerTransportPlugin obfs4 exec /home/docker/gan-tunnel/obfs4proxy/obfs4proxy' >>  ${TORRC_PATH}
+echo 'ServerTransportPlugin obfs4 exec /home/docker/'${PT}'/obfs4proxy/obfs4proxy' >>  ${TORRC_PATH}
 # echo 'ServerTransportPlugin obfs4 exec /home/docker/trafficSniffer/obfs4proxy/obfs4proxy' >> ${TORRC_PATH} 
 
 tor -f ${TORRC_PATH}
