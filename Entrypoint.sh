@@ -5,7 +5,7 @@
 DEVICE=eth0
 BASE='/home/docker'
 TORRC_PATH='/home/docker/tunnel-proxy-linux-docker'
-PT='gan-tunnel'
+PT='trafficSniffer'
 # set offloads
 ifconfig ${DEVICE} mtu 1500
 ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
