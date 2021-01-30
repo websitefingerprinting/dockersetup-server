@@ -5,7 +5,7 @@
 DEVICE=eth0
 BASE='/home/docker'
 TORRC_PATH='/home/docker/tunnel-proxy-linux-docker'
-PT='tamaraw'
+PT='front'
 # set offloads
 ifconfig ${DEVICE} mtu 1500
 ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
@@ -14,6 +14,7 @@ pushd ${BASE}
 #set torrc file
 echo 'BandwidthRate 100 KBytes' >>  ${TORRC_PATH}
 echo 'BandwidthBurst 100 KBytes' >>  ${TORRC_PATH}
+
 echo 'DataDirectory /home/docker/tor-config/tunnel-proxy-hostport'$1 >> ${TORRC_PATH}
 echo 'Log notice stdout' >>  ${TORRC_PATH}
 echo 'SOCKSPort auto' >>  ${TORRC_PATH}
