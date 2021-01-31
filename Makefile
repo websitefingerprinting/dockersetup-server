@@ -25,6 +25,7 @@ VOLUMES = \
 	--volume=${HOST}/AlexaCrawler:${BASE_PATH}/AlexaCrawler	        \
     --volume=${HOST}/front:${BASE_PATH}/front                       \
 	--volume=${HOST}/tamaraw:${BASE_PATH}/tamaraw                   \
+	--volume=${HOST}/dpburst:${BASE_PATH}/dpburst                   \
 	--volume=${HOST_TORCONFIG_PATH}:${TORCONFIG_PATH}               \
 	--volume=`pwd`:${DOCKERSETUP_PATH}
 
