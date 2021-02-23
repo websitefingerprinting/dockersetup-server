@@ -5,7 +5,8 @@
 DEVICE=eth0
 BASE='/home/docker'
 TORRC_PATH='/home/docker/tunnel-proxy-linux-docker'
-PT='dpburst'
+PT='wfdef'
+WFD='tamaraw'
 # set offloads
 ifconfig ${DEVICE} mtu 1500
 ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
@@ -23,10 +24,12 @@ echo 'PublishServerDescriptor 0' >>  ${TORRC_PATH}
 echo 'Exitpolicy reject *:*' >>  ${TORRC_PATH}
 echo 'ORPort auto' >>  ${TORRC_PATH}
 echo 'ExtORPort auto' >>  ${TORRC_PATH}
-echo 'Nickname '${PT}'' >>  ${TORRC_PATH}
+echo 'Nickname '${PT}'-'${WFD}'' >>  ${TORRC_PATH}
 echo 'BridgeRelay 1' >>  ${TORRC_PATH}
-echo 'ServerTransportListenAddr obfs4 0.0.0.0:35000' >>  ${TORRC_PATH}
-echo 'ServerTransportPlugin obfs4 exec /home/docker/'${PT}'/obfs4proxy/obfs4proxy' >>  ${TORRC_PATH}
+echo 'ServerTransportPlugin '${WFD}' exec /home/docker/'${PT}'/obfs4proxy/obfs4proxy' >>  ${TORRC_PATH}
+echo 'ServerTransportOptions '${WFD}' nseg=100 rho-client=12 rho-server=4' >>  ${TORRC_PATH}
+echo 'ServerTransportListenAddr '${WFD}' 0.0.0.0:35000' >>  ${TORRC_PATH}
+# echo 'ServerTransportPlugin obfs4 exec /home/docker/'${PT}'/obfs4proxy/obfs4proxy' >>  ${TORRC_PATH}
 # echo 'ServerTransportPlugin obfs4 exec /home/docker/trafficSniffer/obfs4proxy/obfs4proxy' >> ${TORRC_PATH} 
 
 

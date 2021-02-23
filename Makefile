@@ -26,6 +26,7 @@ VOLUMES = \
     --volume=${HOST}/front:${BASE_PATH}/front                       \
 	--volume=${HOST}/tamaraw:${BASE_PATH}/tamaraw                   \
 	--volume=${HOST}/dpburst:${BASE_PATH}/dpburst                   \
+	--volume=${HOST}/wfdef:${BASE_PATH}/wfdef                       \
 	--volume=${HOST_TORCONFIG_PATH}:${TORCONFIG_PATH}               \
 	--volume=`pwd`:${DOCKERSETUP_PATH}
 
