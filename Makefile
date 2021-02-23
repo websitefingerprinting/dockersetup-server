@@ -33,14 +33,14 @@ VOLUMES = \
 
 
 port=35000
-
+params="nseg=50 rho-client=12 rho-server=4"
 # Make routines
 build:
 	@docker build -t torbridge --rm .
 
 run:
 	@docker run -it --rm --name p${port} ${ENV_VARS} ${VOLUMES}  -p ${port}:35000 \
-	--privileged torbridge ${DOCKERSETUP_PATH}/Entrypoint.sh "$(port)"
+	--privileged torbridge ${DOCKERSETUP_PATH}/Entrypoint.sh "$(port)" $(params)
 shell:
 	@docker run -it --rm --name p${port} ${ENV_VARS} ${VOLUMES} -p ${port}:35000 \
 	--privileged torbridge /bin/bash

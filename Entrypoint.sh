@@ -27,7 +27,7 @@ echo 'ExtORPort auto' >>  ${TORRC_PATH}
 echo 'Nickname '${PT}''${WFD}'' >>  ${TORRC_PATH}
 echo 'BridgeRelay 1' >>  ${TORRC_PATH}
 echo 'ServerTransportPlugin '${WFD}' exec /home/docker/'${PT}'/obfs4proxy/obfs4proxy' >>  ${TORRC_PATH}
-echo 'ServerTransportOptions '${WFD}' nseg=100 rho-client=12 rho-server=4' >>  ${TORRC_PATH}
+echo 'ServerTransportOptions '${WFD}' '$2'' >>  ${TORRC_PATH}
 echo 'ServerTransportListenAddr '${WFD}' 0.0.0.0:35000' >>  ${TORRC_PATH}
 # echo 'ServerTransportPlugin obfs4 exec /home/docker/'${PT}'/obfs4proxy/obfs4proxy' >>  ${TORRC_PATH}
 # echo 'ServerTransportPlugin obfs4 exec /home/docker/trafficSniffer/obfs4proxy/obfs4proxy' >> ${TORRC_PATH} 
