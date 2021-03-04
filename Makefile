@@ -34,7 +34,7 @@ VOLUMES = \
 
 port=35000
 # pt parameters here
-params="n-client-real=0 n-server-real=0 n-client-fake=0 n-server-fake=0 p-fake=0"
+params="n-client-real=1 n-server-real=1 n-client-fake=1 n-server-fake=1 p-fake=1"
 # Make routines
 build:
 	@docker build -t torbridge --rm .
