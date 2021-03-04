@@ -12,8 +12,8 @@ ifconfig ${DEVICE} mtu 1500
 ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
 
 # set go path
-echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile 
-source ~/.profile
+export PATH=$PATH:/usr/local/go/bin
+
 
 # cp PT repository to container's own space.
 cp -r /home/docker/${PT} /home/
