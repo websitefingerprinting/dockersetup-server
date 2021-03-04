@@ -7,7 +7,8 @@ FROM debian:10.6
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install sudo build-essential autoconf git zip unzip xz-utils apt-utils psmisc automake vim
 RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install libtool libevent-dev libssl-dev zlib1g  zlib1g-dev
-RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install net-tools ethtool tshark libpcap-dev iw tcpdump
+RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install net-tools ethtool tshark libpcap-dev iw tcpdump  
+RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install wget
 RUN apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
@@ -19,8 +20,7 @@ RUN adduser --system --group --disabled-password --gecos '' --shell /bin/bash do
 RUN wget https://dl.google.com/go/go1.15.3.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go1.15.3.linux-amd64.tar.gz
 RUN rm -r go1.15.3.linux-amd64.tar.gz
-RUN echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile 
-RUN source ~/.profile
+
 
 #download tor
 RUN git clone https://github.com/websitefingerprinting/dockersetup-server.git 
