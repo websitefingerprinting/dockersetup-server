@@ -17,7 +17,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 # cp PT repository to container's own space.
 cp -r /home/docker/${PT} /home/
-pushd /home/{PT}
+pushd /home/${PT}
 go build -o obfs4proxy/obfs4proxy ./obfs4proxy
 
 pushd ${BASE}
