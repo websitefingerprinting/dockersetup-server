@@ -16,11 +16,6 @@ RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
 # add host user to container
 RUN adduser --system --group --disabled-password --gecos '' --shell /bin/bash docker
 
-# download go
-RUN wget https://dl.google.com/go/go1.15.3.linux-amd64.tar.gz
-RUN tar -C /usr/local -xzf go1.15.3.linux-amd64.tar.gz
-RUN rm -r go1.15.3.linux-amd64.tar.gz
-
 
 #download tor
 RUN git clone https://github.com/websitefingerprinting/dockersetup-server.git 
