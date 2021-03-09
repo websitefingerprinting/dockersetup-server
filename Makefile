@@ -33,15 +33,22 @@ VOLUMES = \
 
 
 port=35000
+
 # pt parameters here
-params="n-client-real=1 n-server-real=1 n-client-fake=1 n-server-fake=1 p-fake=0"
+## randomwt
+# wfd=randomwt
+# params=n-client-real=1 n-server-real=1 n-client-fake=1 n-server-fake=1 p-fake=0
+## tamaraw
+wtd=tamaraw
+params=rho-client=10 rho-server=3 nseg=50
+
 # Make routines
 build:
 	@docker build -t torbridge --rm .
 
 run:
 	@docker run -it --rm --name p${port} ${ENV_VARS} ${VOLUMES}  -p ${port}:35000 \
-	--privileged torbridge ${DOCKERSETUP_PATH}/Entrypoint.sh "$(port)" $(params)
+	--privileged torbridge ${DOCKERSETUP_PATH}/Entrypoint.sh "$(wfd)" "$(port)" "$(params)"
 shell:
 	@docker run -it --rm --name p${port} ${ENV_VARS} ${VOLUMES} -p ${port}:35000 \
 	--privileged torbridge /bin/bash
