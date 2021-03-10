@@ -39,8 +39,12 @@ port=35000
 # wfd=randomwt
 # params=n-client-real=1 n-server-real=1 n-client-fake=1 n-server-fake=1 p-fake=0
 ## tamaraw
-wtd=tamaraw
-params=rho-client=10 rho-server=3 nseg=50
+# wfd=tamaraw
+# params=rho-client=10 rho-server=3 nseg=50
+## null
+wfd=null
+params=""
+
 
 # Make routines
 build:

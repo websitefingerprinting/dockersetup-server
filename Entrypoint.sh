@@ -9,6 +9,10 @@ PT='wfdef'
 wfd=$1
 port=$2
 param=$3
+# echo ${wfd}
+# echo ${port}
+# echo ${param}
+# exit 0
 # set offloads
 ifconfig ${DEVICE} mtu 1500
 ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
@@ -37,8 +41,10 @@ echo 'ExtORPort auto' >>  ${TORRC_PATH}
 echo 'Nickname '${PT}''${wfd}'' >>  ${TORRC_PATH}
 echo 'BridgeRelay 1' >>  ${TORRC_PATH}
 echo 'ServerTransportPlugin '${wfd}' exec /home/'${PT}'/obfs4proxy/obfs4proxy' >>  ${TORRC_PATH}
-echo 'ServerTransportOptions '${wfd}' '${param}'' >>  ${TORRC_PATH}
 echo 'ServerTransportListenAddr '${wfd}' 0.0.0.0:35000' >>  ${TORRC_PATH}
+if [ "${wfd}" != "null" ]; then
+	echo 'ServerTransportOptions '${wfd}' '${param}'' >>  ${TORRC_PATH}
+fi
 # echo 'ServerTransportPlugin obfs4 exec /home/docker/'${PT}'/obfs4proxy/obfs4proxy' >>  ${TORRC_PATH}
 # echo 'ServerTransportPlugin obfs4 exec /home/docker/trafficSniffer/obfs4proxy/obfs4proxy' >> ${TORRC_PATH} 
 
