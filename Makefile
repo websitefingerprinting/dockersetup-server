@@ -41,9 +41,12 @@ port=35000
 ## tamaraw
 # wfd=tamaraw
 # params=rho-client=10 rho-server=3 nseg=50
+## front
+wfd=front
+params=w-min=1 w-max=13 n-client=3000 n-server=3000
 ## null
-wfd=null
-params=""
+# wfd=null
+# params=""
 
 
 # Make routines
