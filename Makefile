@@ -37,13 +37,15 @@ port=35000
 # pt parameters here
 ## randomwt
 # wfd=randomwt
-# params=n-client-real=1 n-server-real=1 n-client-fake=1 n-server-fake=1 p-fake=0
+# params=n-client-real=0 n-server-real=0 n-client-fake=0 n-server-fake=0 p-fake=0
+wfd=randomwt
+params=n-client-real=2 n-server-real=22 n-client-fake=8 n-server-fake=90 p-fake=0.6
 ## tamaraw
 # wfd=tamaraw
 # params=rho-client=10 rho-server=3 nseg=50
 ## front
-wfd=front
-params=w-min=1 w-max=13 n-client=3000 n-server=3000
+# wfd=front
+# params=w-min=1 w-max=13 n-client=3000 n-server=3000
 ## null
 # wfd=null
 # params=""
