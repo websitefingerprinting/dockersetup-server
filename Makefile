@@ -39,7 +39,7 @@ port=35000
 # wfd=randomwt
 # params=n-client-real=0 n-server-real=0 n-client-fake=0 n-server-fake=0 p-fake=0
 wfd=randomwt
-params=n-client-real=2 n-server-real=22 n-client-fake=8 n-server-fake=90 p-fake=0.6
+params=n-client-real=4 n-server-real=45 n-client-fake=8 n-server-fake=90 p-fake=0.4
 ## tamaraw
 # wfd=tamaraw
 # params=rho-client=10 rho-server=3 nseg=50
