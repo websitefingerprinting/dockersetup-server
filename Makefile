@@ -38,11 +38,13 @@ port=35000
 ## randomwt
 # wfd=randomwt
 # params=n-client-real=0 n-server-real=0 n-client-fake=0 n-server-fake=0 p-fake=0
-wfd=randomwt
-params=n-client-real=4 n-server-real=45 n-client-fake=8 n-server-fake=90 p-fake=0.4
+# wfd=randomwt
+# params=n-client-real=4 n-server-real=45 n-client-fake=8 n-server-fake=90 p-fake=0.4
 ## tamaraw
 # wfd=tamaraw
-# params=rho-client=10 rho-server=3 nseg=50
+# params=rho-client=12 rho-server=4 nseg=200
+wfd=tamaraw
+params=rho-client=24 rho-server=8 nseg=200
 ## front
 # wfd=front
 # params=w-min=1 w-max=13 n-client=3000 n-server=3000
