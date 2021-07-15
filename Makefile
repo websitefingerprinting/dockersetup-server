@@ -40,7 +40,7 @@ port=35000
 # params=""
 ## wfgan
 wfd=wfgan
-params=tol=0.5
+params=tol=0.5 eps=0.5
 ## tamaraw
 # wfd=tamaraw
 # params=rho-client=12 rho-server=4 nseg=200
