@@ -39,16 +39,16 @@ port=35000
 # wfd=null
 # params=""
 ## wfgan
-wfd=wfgan
-params=tol=0.5 eps=0.5
+# wfd=wfgan
+# params=tol=0.4
 ## tamaraw
 # wfd=tamaraw
-# params=rho-client=12 rho-server=4 nseg=200
+# params=rho-client=14 rho-server=4 nseg=100
 # wfd=tamaraw
 # params=rho-client=24 rho-server=8 nseg=200
 ## front
-# wfd=front
-# params=w-min=1 w-max=13 n-client=3000 n-server=3000
+wfd=front
+params=w-min=1 w-max=14 n-client=6000 n-server=6000
 
 
 ## randomwt
