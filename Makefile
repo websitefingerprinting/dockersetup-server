@@ -20,19 +20,14 @@ ENV_VARS = \
 
 VOLUMES = \
 	--volume=${HOST_SSH}:${GUEST_SSH}			                    \
-	--volume=${HOST}/gan-tunnel:${BASE_PATH}/gan-tunnel             \
-	--volume=${HOST}/trafficSniffer:${BASE_PATH}/trafficSniffer     \
 	--volume=${HOST}/AlexaCrawler:${BASE_PATH}/AlexaCrawler	        \
-    --volume=${HOST}/front:${BASE_PATH}/front                       \
-	--volume=${HOST}/tamaraw:${BASE_PATH}/tamaraw                   \
-	--volume=${HOST}/dpburst:${BASE_PATH}/dpburst                   \
 	--volume=${HOST}/wfdef:${BASE_PATH}/wfdef                       \
 	--volume=${HOST_TORCONFIG_PATH}:${TORCONFIG_PATH}               \
 	--volume=`pwd`:${DOCKERSETUP_PATH}
 
 
 
-port=35000
+port=443
 
 # pt parameters here
 ## null
@@ -42,13 +37,13 @@ port=35000
 # wfd=wfgan
 # params=tol=0.4
 ## tamaraw
-# wfd=tamaraw
-# params=rho-client=14 rho-server=4 nseg=100
+wfd=tamaraw
+params=rho-client=14  rho-server=4 nseg=100
 # wfd=tamaraw
 # params=rho-client=24 rho-server=8 nseg=200
 ## front
-wfd=front
-params=w-min=1 w-max=14 n-client=6000 n-server=6000
+# wfd=front
+# params=w-min=1 w-max=14 n-client=6000 n-server=6000
 
 
 ## randomwt
