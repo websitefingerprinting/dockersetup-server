@@ -11,7 +11,7 @@ GUEST_SSH=/home/docker/.ssh
 DOCKERSETUP_PATH=/home/docker/dockersetup-server
 TORCONFIG_PATH=/home/docker/tor-config
 
-HOST_TORCONFIG_PATH=/home/jgongac/tor-config
+HOST_TORCONFIG_PATH=/home/jgongac/tor-config11
 HOST_SSH=${HOME}/.ssh
 HOST=${HOME}
 
@@ -31,8 +31,8 @@ port=443
 
 # pt parameters here
 ## null
-# wfd=null
-# params=""
+wfd=null
+params=""
 ## wfgan
 # wfd=wfgan
 # params=tol=0.4

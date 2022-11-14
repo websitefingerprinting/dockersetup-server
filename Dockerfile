@@ -24,7 +24,7 @@ WORKDIR ./tor-0.4.7.8
 RUN ./configure --disable-asciidoc && make && make install	
 
 WORKDIR /
-RUN rm -r ./tor-0.4.4.5
+RUN rm -r /tor-0.4.7.8
 # RUN rm -r /dockersetup-server
 # RUN mv /dockersetup-server /home/docker/
 # RUN chmod a+x /home/docker/dockersetup-server/Entrypoint.sh
