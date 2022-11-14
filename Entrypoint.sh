@@ -14,8 +14,8 @@ param=$3
 # echo ${param}
 # exit 0
 # set offloads
-ifconfig ${DEVICE} mtu 1500
-ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
+# ifconfig ${DEVICE} mtu 1500
+# ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
 
 # # set go path
 # export PATH=$PATH:/usr/local/go/bin

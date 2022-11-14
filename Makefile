@@ -46,8 +46,8 @@ port=443
 # params=w-min=1 w-max=14 n-client=6000 n-server=6000
 
 ## regulator
-wfd=regulator
-params=r=277 d=.94 t=3.55 n=3550 u=3.95 c=1.77
+# wfd=regulator
+# params=r=277 d=.94 t=3.55 n=3550 u=3.95 c=1.77
 
 
 ## randomwt
@@ -59,21 +59,21 @@ params=r=277 d=.94 t=3.55 n=3550 u=3.95 c=1.77
 
 # Make routines
 build:
-	@docker build -t torbridge --rm .
+	@docker build -t torbridge11 --rm .
 
 run:
 	@docker run -it --rm --name p${port} ${ENV_VARS} ${VOLUMES}  -p ${port}:35000 \
-	--privileged torbridge ${DOCKERSETUP_PATH}/Entrypoint.sh "$(wfd)" "$(port)" "$(params)"
+	--privileged torbridge11 ${DOCKERSETUP_PATH}/Entrypoint.sh "$(wfd)" "$(port)" "$(params)"
 shell:
 	@docker run -it --rm --name p${port} ${ENV_VARS} ${VOLUMES} -p ${port}:35000 \
-	--privileged torbridge /bin/bash
+	--privileged torbridge11 /bin/bash
 clean:
 	@sudo rm -rf ${HOST_TORCONFIG_PATH}/tunnel-proxy-hostport*/pt_state/obfs4proxy.log
 stop:
-	@docker stop `docker ps -a -q -f ancestor=torbridge`
-	@docker rm `docker ps -a -q -f ancestor=torbridge`
+	@docker stop `docker ps -a -q -f ancestor=torbridge11`
+	@docker rm `docker ps -a -q -f ancestor=torbridge11`
 
 destroy:
-	@docker rmi -f torbridge
+	@docker rmi -f torbridge11
 
 reset: stop destroy
