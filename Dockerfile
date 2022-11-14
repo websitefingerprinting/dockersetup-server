@@ -18,13 +18,14 @@ RUN adduser --system --group --disabled-password --gecos '' --shell /bin/bash do
 
 
 #download tor
-RUN wget https://dist.torproject.org/tor-0.4.7.8.tar.gz
-RUN tar -zxf tor-0.4.7.8.tar.gz 
-WORKDIR ./tor-0.4.7.8
+ARG TOR_VERSION=0.4.7.11
+RUN wget https://dist.torproject.org/tor-$TOR_VERSION.tar.gz
+RUN tar -zxf tor-$TOR_VERSION.tar.gz 
+WORKDIR /tor-$TOR_VERSION
 RUN ./configure --disable-asciidoc && make && make install	
 
 WORKDIR /
-RUN rm -r /tor-0.4.7.8
+RUN rm -r /tor-$TOR_VERSION
 # RUN rm -r /dockersetup-server
 # RUN mv /dockersetup-server /home/docker/
 # RUN chmod a+x /home/docker/dockersetup-server/Entrypoint.sh
