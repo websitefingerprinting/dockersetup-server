@@ -11,14 +11,11 @@ param=$3
 
 
 
-# cp PT repository to container's own space.
-cp -r /home/docker/${PT} /home/
 
 pushd ${BASE}
 
-#set torrc file
-# echo 'BandwidthRate 100 KBytes' >>  ${TORRC_PATH}
-# echo 'BandwidthBurst 100 KBytes' >>  ${TORRC_PATH}
+# cp PT binary to container's own space.
+cp ${BASE}/${PT}/obfs4proxy/obfs4proxy ${BASE}/obfs4proxy-bin
 
 echo 'ContactInfo '${EMAIL} >> ${TORRC_PATH}
 echo 'DataDirectory /home/docker/tor-config/tunnel-proxy-hostport'${port} >> ${TORRC_PATH}
@@ -31,7 +28,7 @@ echo 'ORPort auto IPv6Only' >>  ${TORRC_PATH}
 echo 'ExtORPort auto' >>  ${TORRC_PATH}
 echo 'Nickname '${PT}''${wfd}'' >>  ${TORRC_PATH}
 echo 'BridgeRelay 1' >>  ${TORRC_PATH}
-echo 'ServerTransportPlugin '${wfd}' exec /home/'${PT}'/obfs4proxy/obfs4proxy' >>  ${TORRC_PATH}
+echo 'ServerTransportPlugin '${wfd}' exec /home/docker/obfs4proxy-bin' >>  ${TORRC_PATH}
 echo 'ServerTransportListenAddr '${wfd}' 0.0.0.0:35000' >>  ${TORRC_PATH}
 if [ "${wfd}" != "null" ]; then
 	echo 'ServerTransportOptions '${wfd}' '${param}'' >>  ${TORRC_PATH}
