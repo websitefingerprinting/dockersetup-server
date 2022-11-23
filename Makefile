@@ -1,5 +1,3 @@
-# all: build test stop
-
 # this is to forward X apps to host:
 # See: http://stackoverflow.com/a/25280523/1336939
 XSOCK=/tmp/.X11-unix
@@ -20,7 +18,6 @@ ENV_VARS = \
 
 VOLUMES = \
 	--volume=${HOST_SSH}:${GUEST_SSH}			                    \
-	--volume=${HOST}/AlexaCrawler:${BASE_PATH}/AlexaCrawler	        \
 	--volume=${HOST}/wfdef:${BASE_PATH}/wfdef                       \
 	--volume=${HOST_TORCONFIG_PATH}:${TORCONFIG_PATH}               \
 	--volume=`pwd`:${DOCKERSETUP_PATH}

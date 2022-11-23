@@ -1,34 +1,27 @@
-# This dockerfile allows to run an crawl inside a docker container
+# Base docker image
+FROM debian:stable-slim
 
-# Pull base image.
-FROM debian:10.6
+# Install dependencies to add Tor's repository.
+RUN apt-get update && apt-get install -y \
+    curl \
+    gpg \
+    gpg-agent \
+    ca-certificates \
+    libcap2-bin \
+    --no-install-recommends
 
-# Install required packages.
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install sudo build-essential autoconf git zip unzip xz-utils apt-utils psmisc automake vim
-RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install libtool libevent-dev libssl-dev zlib1g  zlib1g-dev
-RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install net-tools ethtool tshark libpcap-dev iw tcpdump  
-RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install wget
-RUN apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
-RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+# See: <https://2019.www.torproject.org/docs/debian.html.en>
+RUN curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --import
+RUN gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -
 
-# add host user to container
-RUN adduser --system --group --disabled-password --gecos '' --shell /bin/bash docker
+RUN printf "deb https://deb.torproject.org/torproject.org stable main\n" >> /etc/apt/sources.list.d/tor.list
 
+# Install remaining dependencies.
+RUN apt-get update && apt-get install -y \
+    tor \
+    tor-geoipdb \
+    --no-install-recommends
 
-#download tor
-ARG TOR_VERSION=0.4.7.11
-RUN wget https://dist.torproject.org/tor-$TOR_VERSION.tar.gz
-RUN tar -zxf tor-$TOR_VERSION.tar.gz 
-WORKDIR /tor-$TOR_VERSION
-RUN ./configure --disable-asciidoc && make && make install	
-
-WORKDIR /
-RUN rm -r /tor-$TOR_VERSION
-# RUN rm -r /dockersetup-server
-# RUN mv /dockersetup-server /home/docker/
-# RUN chmod a+x /home/docker/dockersetup-server/Entrypoint.sh
 
 # Set the display
 ENV DISPLAY $DISPLAY
